@@ -24,23 +24,29 @@ int main() {
 
   string automovel;
   int numVagasMoto;
+  int vagaM;
   int numVagasCarro;
+  int vagaC;
   int carrosEst = 0;
   int motosEst = 0;
   int opcao;
 
+  cout << endl;
   cout << "===Bem Vindo ao Gerenciamento de Vagas do Nosso estacionamento!===" << endl;
 
   cout << "Por favor, digite o numero total de vagas para carros: ";
   cin >> numVagasCarro;
+  vagaC = numVagasCarro;
   cout << " " << endl;
 
   cout << "Por favor, digite o numero total de vagas para motos; ";
   cin >> numVagasMoto;
+  vagaM = numVagasMoto;
   cout << " " << endl;
 
   while (true)
-  { cout << "=========== Menu Estacionamento ===========" << endl;
+  {
+  cout << "=========== Menu Estacionamento ===========" << endl;
   cout << "1 - Entrada de veiculos." << endl;
   cout << "2 - Saida de veiculos." << endl;
   cout << "3 - Exibir numero de vagas disponiveis." << endl;
@@ -62,9 +68,10 @@ int main() {
         {
           if (carrosEst < numVagasCarro){
             carrosEst++;
-            cout << "Carro estacionado!" << endl;
+            vagaC--;
+            cout << "Carro estacionado!" << endl << endl;
           } else {
-            cout << "O numero total de vagas de carros disponíveis, já foi preenchido!" << endl;
+            cout << "O numero total de vagas de carros disponíveis, já foi preenchido!" << endl<< endl;
           }
         }
          else if( automovel == "moto")
@@ -72,10 +79,11 @@ int main() {
         if(motosEst < numVagasMoto)
         {
           motosEst++;
+          vagaM--;
           cout << "Moto estacionada!";
         }else
         {
-          cout << "O numero total de vagas de motos disponíveis, já foi preenchido!" << endl;
+          cout << "O numero total de vagas de motos disponíveis, já foi preenchido!" << endl<< endl;
         }} else 
         {
         cout << "Veiculo inválido!";
@@ -91,30 +99,40 @@ int main() {
       if( automovel == "carro")
       {
         if (carrosEst < numVagasCarro){
-        carrosEst++;
-        cout << "Carro estacionado!" << endl;
+        carrosEst--;
+        vagaC++;
+        cout << "Carro foi embora!" << endl<< endl;
         } else {
-        cout << "O numero total de vagas de carros disponíveis, já foi preenchido!" << endl;
+        cout << "Nao ha mais carros estacionados" << endl<< endl;
         }
       }
       else if( automovel == "moto")
         {
         if(motosEst < numVagasMoto)
         {
-          motosEst++;
-          cout << "Moto estacionada!";
+          motosEst--;
+          vagaM++;
+          cout << "Moto foi embora!"<< endl<< endl;
         }else {
-        cout << "O numero total de vagas de motos disponíveis, já foi preenchido!" << endl;
+        cout << "Nao ha mais mots estacionadas!" << endl<< endl;;
        }} else {
         cout << "Veiculo inválido!";
       }
+      case 3:
+      {
+        cout << "Numero de vagas de motos disponiveis: " << vagaM << endl;
+        cout << "Numero de vagas de carros disponiveis: " << vagaC << endl;
+        cout << endl;
+        break;
+      }
+
+      case 0:
+      {
+      cout << "Finalizando o Programa";
+      cout << endl;
+      return 0;
+      }
     }
-
-
-
-
-
-
     }
   }
   return 0;
